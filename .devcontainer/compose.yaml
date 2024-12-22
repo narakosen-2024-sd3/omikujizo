@@ -1,0 +1,11 @@
+name: omikujizo-dev
+services:
+  app:
+    build:
+      context: ../app
+      target: development
+    command: sleep infinity
+    volumes:
+      - type: bind
+        source: ../app
+        target: /workspace
