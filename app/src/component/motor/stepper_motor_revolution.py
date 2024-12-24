@@ -1,6 +1,6 @@
-from typing import Final, Literal, get_args
+from typing import Final, Literal, TypeAlias, get_args
 
-type StepperMotorRevolutionType = Literal[2048, 4096]
+StepperMotorRevolutionType: TypeAlias = Literal[2048, 4096]
 
 
 class StepperMotorRevolution:

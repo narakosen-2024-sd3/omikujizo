@@ -1,6 +1,6 @@
-from typing import Final, Literal, get_args
+from typing import Final, Literal, TypeAlias, get_args
 
-type LogicLevelType = Literal["HIGH", "LOW"]
+LogicLevelType: TypeAlias = Literal["HIGH", "LOW"]
 
 
 class LogicLevel:

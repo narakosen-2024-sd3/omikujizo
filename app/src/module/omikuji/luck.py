@@ -1,6 +1,13 @@
-from typing import Final, Literal, get_args
+from typing import Final, Literal, TypeAlias, get_args
 
-type LuckType = Literal["Dai-kichi", "Sho-kichi", "Kichi", "Dai-kyo", "Sho-kyo", "Kyo"]
+LuckType: TypeAlias = Literal[
+  "Dai-kichi",
+  "Sho-kichi",
+  "Kichi",
+  "Dai-kyo",
+  "Sho-kyo",
+  "Kyo",
+]
 
 
 class Luck:

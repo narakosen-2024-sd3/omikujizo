@@ -1,6 +1,6 @@
-from typing import Final, Literal, get_args
+from typing import Final, Literal, TypeAlias, get_args
 
-type GpioNumberType = Literal[
+GpioNumberType: TypeAlias = Literal[
   2,
   3,
   4,
