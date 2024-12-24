@@ -11,9 +11,14 @@ class DutyCycle:
 
   def __init__(self, value_ratio: float) -> None:
     if not DutyCycle.is_valid(value_ratio):
-      raise ValueError("DutyCycle is not valid: {}".format(value_ratio))
+      raise ValueError("Duty cycle is not valid: {}".format(value_ratio))
 
     self.__value_ratio: Final[float] = value_ratio
 
   def get_value(self) -> float:
     return self.__value_ratio
+
+  def equals(self, other: object) -> bool:
+    if not isinstance(other, DutyCycle):
+      return False
+    return self.__value_ratio == other.__value_ratio

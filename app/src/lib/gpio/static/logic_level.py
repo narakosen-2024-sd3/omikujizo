@@ -12,7 +12,7 @@ class LogicLevel:
 
   def __init__(self, value: LogicLevelType) -> None:
     if not LogicLevel.is_valid(value):
-      raise ValueError("LogicVoltage is not valid: {}".format(value))
+      raise ValueError("Logic level is not valid: {}".format(value))
 
     self.__value: Final[LogicLevelType] = value
 
@@ -21,3 +21,8 @@ class LogicLevel:
 
   def is_low(self) -> bool:
     return self.__value == "LOW"
+
+  def equals(self, other: object) -> bool:
+    if not isinstance(other, LogicLevel):
+      return False
+    return self.__value == other.__value

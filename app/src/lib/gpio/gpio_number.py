@@ -39,9 +39,14 @@ class GpioNumber:
 
   def __init__(self, value: GpioNumberType) -> None:
     if not GpioNumber.is_valid(value):
-      raise ValueError("GpioNumber is not valid: {}".format(value))
+      raise ValueError("Gpio number is not valid: {}".format(value))
 
     self.__value: Final[GpioNumberType] = value
 
   def get_value(self) -> GpioNumberType:
     return self.__value
+
+  def equals(self, other: object) -> bool:
+    if not isinstance(other, GpioNumber):
+      return False
+    return self.__value == other.__value

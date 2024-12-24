@@ -16,7 +16,7 @@ class Luck:
 
     self.__value: Final[LuckType] = value
 
-  def __eq__(self, other: object) -> bool:
+  def equals(self, other: object) -> bool:
     if not isinstance(other, Luck):
-      raise NotImplementedError()
+      return False
     return self.__value == other.__value

@@ -13,9 +13,14 @@ class ServoMotorDegree:
 
   def __init__(self, value: float) -> None:
     if not ServoMotorDegree.is_valid(value):
-      raise ValueError("ServoMotorDegree is not valid: {}".format(value))
+      raise ValueError("Servo motor degree is not valid: {}".format(value))
 
     self.__value = value
 
   def get_value(self) -> float:
     return self.__value
+
+  def equals(self, other: object) -> bool:
+    if not isinstance(other, ServoMotorDegree):
+      return False
+    return self.__value == other.__value

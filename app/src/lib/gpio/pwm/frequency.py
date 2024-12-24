@@ -17,3 +17,8 @@ class Frequency:
 
   def get_value(self) -> float:
     return self.__value_hz
+
+  def equals(self, other: object) -> bool:
+    if not isinstance(other, Frequency):
+      return False
+    return self.__value_hz == other.__value_hz

@@ -17,3 +17,8 @@ class Rpm:
 
   def get_value(self) -> int:
     return self.__value
+
+  def equals(self, other: object) -> bool:
+    if not isinstance(other, Rpm):
+      return False
+    return self.__value == other.__value
