@@ -35,4 +35,4 @@ class StepperMotorDriver(StepperMotorDriverInterface):
 
     self.__step_pin.set(Frequency(frequency), duty_cycle)
     time.sleep(duration)
-    self.__step_pin.set_zero()
+    self.__step_pin.off()

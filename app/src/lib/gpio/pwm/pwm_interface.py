@@ -10,5 +10,5 @@ class PwmInterface(metaclass=ABCMeta):
     raise NotImplementedError()
 
   @abstractmethod
-  def set_zero(self) -> None:
+  def off(self) -> None:
     raise NotImplementedError()
