@@ -1,4 +1,4 @@
-from typing import Final
+from typing import Final, LiteralString
 
 from src.component.motor.rpm import Rpm
 from src.component.motor.stepper_motor_degree import StepperMotorDegree
@@ -9,7 +9,7 @@ from src.component.motor.stepper_motor_driver_interface import (
 from .omikuji_interface import OmikujiInterface
 
 
-class Omikuji[ROLL_TYPE](OmikujiInterface[ROLL_TYPE]):
+class Omikuji[ROLL_TYPE: LiteralString](OmikujiInterface[ROLL_TYPE]):
   def __init__(
     self, stepper_motor: StepperMotorDriverInterface, sequence: list[ROLL_TYPE]
   ) -> None:
