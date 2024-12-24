@@ -21,7 +21,5 @@ class StepperMotorRevolution:
   def get_value(self) -> StepperMotorRevolutionType:
     return self.__value
 
-  def equals(self, other: object) -> bool:
-    if not isinstance(other, StepperMotorRevolution):
-      return False
+  def equals(self, other: "StepperMotorRevolution") -> bool:
     return self.__value == other.__value

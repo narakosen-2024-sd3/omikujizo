@@ -46,7 +46,5 @@ class GpioNumber:
   def get_value(self) -> GpioNumberType:
     return self.__value
 
-  def equals(self, other: object) -> bool:
-    if not isinstance(other, GpioNumber):
-      return False
+  def equals(self, other: "GpioNumber") -> bool:
     return self.__value == other.__value

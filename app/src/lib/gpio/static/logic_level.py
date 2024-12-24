@@ -22,7 +22,7 @@ class LogicLevel:
   def is_low(self) -> bool:
     return self.__value == "LOW"
 
-  def equals(self, other: object) -> bool:
-    if not isinstance(other, LogicLevel):
-      return False
+  def equals(self, other: "LogicLevel") -> bool:
+    """同値判定
+
     return self.__value == other.__value

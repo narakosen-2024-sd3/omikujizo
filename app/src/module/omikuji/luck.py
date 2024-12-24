@@ -23,7 +23,5 @@ class Luck:
 
     self.__value: Final[LuckType] = value
 
-  def equals(self, other: object) -> bool:
-    if not isinstance(other, Luck):
-      return False
+  def equals(self, other: "Luck") -> bool:
     return self.__value == other.__value

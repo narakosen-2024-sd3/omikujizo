@@ -21,7 +21,5 @@ class StepperMotorDegree:
   def get_value(self) -> float:
     return self.__value
 
-  def equals(self, other: object) -> bool:
-    if not isinstance(other, StepperMotorDegree):
-      return False
+  def equals(self, other: "StepperMotorDegree") -> bool:
     return self.__value == other.__value

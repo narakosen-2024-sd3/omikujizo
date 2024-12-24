@@ -20,7 +20,5 @@ class ServoMotorDegree:
   def get_value(self) -> float:
     return self.__value
 
-  def equals(self, other: object) -> bool:
-    if not isinstance(other, ServoMotorDegree):
-      return False
+  def equals(self, other: "ServoMotorDegree") -> bool:
     return self.__value == other.__value

@@ -18,7 +18,5 @@ class DutyCycle:
   def get_value(self) -> float:
     return self.__value_ratio
 
-  def equals(self, other: object) -> bool:
-    if not isinstance(other, DutyCycle):
-      return False
+  def equals(self, other: "DutyCycle") -> bool:
     return self.__value_ratio == other.__value_ratio
