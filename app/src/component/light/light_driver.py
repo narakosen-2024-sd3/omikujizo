@@ -1,7 +1,7 @@
-from src.lib.gpio.static.logic_level import LogicLevel
-from src.lib.gpio.static.output_interface import StaticOutputInterface
+from src.lib.gpio.static.type.output_interface import StaticOutputInterface
+from src.lib.gpio.static.value.logic_level import LogicLevel
 
-from .light_driver_interface import LightDriverInterface
+from .type.light_driver_interface import LightDriverInterface
 
 
 class LedDriver(LightDriverInterface):

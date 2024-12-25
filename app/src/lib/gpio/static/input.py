@@ -6,9 +6,9 @@ from typing import Final
 
 import pigpio
 
-from ..gpio_number import GpioNumber
-from .input_interface import StaticInputInterface
-from .logic_level import LogicLevel
+from ..value.gpio_number import GpioNumber
+from .type.input_interface import StaticInputInterface
+from .value.logic_level import LogicLevel
 
 
 class StaticInputWrapper(StaticInputInterface):

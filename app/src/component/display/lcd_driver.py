@@ -1,7 +1,8 @@
 from typing import Final
 
-from src.component.display.lcd_driver_interface import LcdDriverInterface
-from src.lib.gpio.i2c.i2c_interface import I2cInterface
+from src.lib.gpio.i2c.type.i2c_interface import I2cInterface
+
+from .type.lcd_driver_interface import LcdDriverInterface
 
 
 class LcdDriver(LcdDriverInterface):

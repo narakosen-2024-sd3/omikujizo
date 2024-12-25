@@ -1,10 +1,13 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from .bow_detector_config import BowDetectorConfig
-from .door_config import LeftDoorConfig, RightDoorConfig
-from .halo_config import HaloConfig
-from .jewel_config import JewelConfig
-from .omikuji_config import BottomOmikujiConfig, TopOmikujiConfig
+from src.feature.bow_detector.config.bow_detector_config import BowDetectorConfig
+from src.feature.door.config.door_config import LeftDoorConfig, RightDoorConfig
+from src.feature.halo.config.halo_config import HaloConfig
+from src.feature.jewel.config.jewel_config import JewelConfig
+from src.feature.omikuji.config.omikuji_config import (
+  BottomOmikujiConfig,
+  TopOmikujiConfig,
+)
 
 
 class __Config(BaseSettings):

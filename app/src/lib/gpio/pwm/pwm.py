@@ -5,10 +5,10 @@ from typing import Final
 
 import pigpio
 
-from ..gpio_number import GpioNumber
-from .duty_cycle import DutyCycle
-from .frequency import Frequency
-from .pwm_interface import PwmInterface
+from ..value.gpio_number import GpioNumber
+from .type.pwm_interface import PwmInterface
+from .value.duty_cycle import DutyCycle
+from .value.frequency import Frequency
 
 
 class PwmWrapper(PwmInterface):
