@@ -1,7 +1,6 @@
-from abc import ABCMeta, abstractmethod
+from typing import Protocol
 
 
-class BowDetectorInterface(metaclass=ABCMeta):
-  @abstractmethod
+class IBowDetector(Protocol):
   def detect(self) -> bool:
     raise NotImplementedError()

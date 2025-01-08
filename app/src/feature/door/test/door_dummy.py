@@ -1,7 +1,7 @@
-from ..type.door_interface import DoorInterface
+from ..type.door_interface import IDoor
 
 
-class DoorDummy(DoorInterface):
+class DoorDummy(IDoor):
   def open(self) -> None:
     print("Door.open()")
 

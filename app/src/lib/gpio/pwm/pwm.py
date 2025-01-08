@@ -5,13 +5,13 @@ from typing import Final
 
 import pigpio
 
-from ..value.gpio_number import GpioNumber
-from .type.pwm_interface import PwmInterface
-from .value.duty_cycle import DutyCycle
-from .value.frequency import Frequency
+from ..gpio_number import GpioNumber
+from .duty_cycle import DutyCycle
+from .frequency import Frequency
+from .type.pwm_interface import IPwmOutput
 
 
-class PwmWrapper(PwmInterface):
+class PwmOutput(IPwmOutput):
   def __init__(self, gpio_number: GpioNumber):
     self.__gpio_number: Final[GpioNumber] = gpio_number
     self.__gpio: Final[pigpio.pi] = pigpio.pi()

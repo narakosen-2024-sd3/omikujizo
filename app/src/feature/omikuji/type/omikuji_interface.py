@@ -1,12 +1,9 @@
-from abc import ABCMeta, abstractmethod
-from typing import LiteralString
+from typing import LiteralString, Protocol
 
 
-class OmikujiInterface[ROLL_TYPE: LiteralString](metaclass=ABCMeta):
-  @abstractmethod
-  def start(self) -> None:
+class IOmikuji[ROLL_TYPE: LiteralString](Protocol):
+  async def start(self) -> None:
     raise NotImplementedError()
 
-  @abstractmethod
-  def stop(self, roll: ROLL_TYPE) -> None:
+  async def stop(self, roll: ROLL_TYPE) -> None:
     raise NotImplementedError()

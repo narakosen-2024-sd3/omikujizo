@@ -1,9 +1,9 @@
-from abc import ABCMeta, abstractmethod
-
-from ..value.logic_level import LogicLevel
+from typing import Protocol
 
 
-class StaticOutputInterface(metaclass=ABCMeta):
-  @abstractmethod
-  def set(self, logic_level: LogicLevel) -> None:
+class IStaticOutput(Protocol):
+  def set_high(self) -> None:
+    raise NotImplementedError()
+
+  def set_low(self) -> None:
     raise NotImplementedError()

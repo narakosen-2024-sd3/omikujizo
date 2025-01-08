@@ -1,7 +1,6 @@
-from abc import ABCMeta, abstractmethod
+from typing import Protocol
 
 
-class HumanDetectorInterface(metaclass=ABCMeta):
-  @abstractmethod
+class IHumanDetector(Protocol):
   def detect(self) -> bool:
     raise NotImplementedError()

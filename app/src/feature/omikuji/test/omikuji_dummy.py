@@ -1,9 +1,9 @@
 from typing import LiteralString
 
-from ..type.omikuji_interface import OmikujiInterface
+from ..type.omikuji_interface import IOmikuji
 
 
-class OmikujiDummy[ROLL_TYPE: LiteralString](OmikujiInterface[ROLL_TYPE]):
+class OmikujiDummy[ROLL_TYPE: LiteralString](IOmikuji[ROLL_TYPE]):
   def start(self) -> None:
     print("Omikuji.start()")
 

@@ -1,60 +1,61 @@
-from config.config import config
-from src.component.light.light_driver import LedDriver
-from src.component.motor.servo_motor_driver import ServoMotorDriver
-from src.component.motor.stepper_motor_driver import StepperMotorDriver
+from src.component.camera.usb_camera import UsbCamera
+from src.component.light.led import Led
+from src.component.motor.servo.servo_motor import ServoMotor
+from src.component.motor.stepper.stepper_motor import StepperMotor
+from src.config.config import config
+from src.feature.door.door import Door
+from src.feature.halo.halo import Halo
+from src.feature.jewel.jewel import Jewel
+from src.feature.omikuji.omikuji import Omikuji
 from src.lib.gpio.gpio_number import GpioNumber
-from src.lib.gpio.pwm.pwm import PwmWrapper
-from src.lib.gpio.static.output import StaticOutputWrapper
+from src.lib.gpio.pwm.test.mock_pwm import MockPwmOutput as PwmOutput
+from src.lib.gpio.static.test.mock_output import MockStaticOutput as StaticOutput
 from src.lib.time.sleep import Sleep
-from src.module.door.door import Door
-from src.module.halo.halo import Halo
-from src.module.jewel.jewel import Jewel
-from src.module.omikuji.omikuji import Omikuji
+
+camera = UsbCamera(0)
 
 door = Door(
-  ServoMotorDriver(
-    PwmWrapper(
-      GpioNumber(config.left_door.PWM_PIN),
-    ),
+  left_servo_motor=ServoMotor(
+    control_pin=PwmOutput(gpio_number=GpioNumber(value=config.left_door.PWM_PIN)),
+    sleep=Sleep(),
   ),
-  ServoMotorDriver(
-    PwmWrapper(
-      GpioNumber(config.right_door.PWM_PIN),
-    ),
+  right_servo_motor=ServoMotor(
+    control_pin=PwmOutput(gpio_number=GpioNumber(value=config.right_door.PWM_PIN)),
+    sleep=Sleep(),
   ),
 )
 
 halo = Halo(
-  LedDriver(
-    StaticOutputWrapper(
-      GpioNumber(config.halo.ANODE_PIN),
-    ),
+  tape_light=Led(
+    anode_pin=StaticOutput(gpio_number=GpioNumber(value=config.halo.ANODE_PIN)),
   ),
-  Sleep(),
+  sleep=Sleep(),
 )
 
 jewel = Jewel(
-  LedDriver(
-    StaticOutputWrapper(
-      GpioNumber(config.jewel.ANODE_PIN),
-    ),
+  led=Led(
+    anode_pin=StaticOutput(gpio_number=GpioNumber(value=config.jewel.ANODE_PIN)),
   ),
 )
 
-omikuji_top = Omikuji[config.top_omikuji.ROLL_TYPE](
-  StepperMotorDriver(
-    PwmWrapper(
-      GpioNumber(config.top_omikuji.STEP_PIN),
-    ),
+top_omikuji = Omikuji[config.top_omikuji.ROLL_TYPE](
+  stepper_motor=StepperMotor(
+    in1_pin=StaticOutput(gpio_number=GpioNumber(value=config.top_omikuji.IN1_PIN)),
+    in2_pin=StaticOutput(gpio_number=GpioNumber(value=config.top_omikuji.IN2_PIN)),
+    in3_pin=StaticOutput(gpio_number=GpioNumber(value=config.top_omikuji.IN3_PIN)),
+    in4_pin=StaticOutput(gpio_number=GpioNumber(value=config.top_omikuji.IN4_PIN)),
+    sleep=Sleep(),
   ),
-  config.top_omikuji.SEQUENCE,
+  sequence=config.top_omikuji.SEQUENCE,
 )
 
-omikuji_bottom = Omikuji[config.bottom_omikuji.ROLL_TYPE](
-  StepperMotorDriver(
-    PwmWrapper(
-      GpioNumber(config.bottom_omikuji.STEP_PIN),
-    ),
+bottom_omikuji = Omikuji[config.bottom_omikuji.ROLL_TYPE](
+  stepper_motor=StepperMotor(
+    in1_pin=StaticOutput(gpio_number=GpioNumber(value=config.bottom_omikuji.IN1_PIN)),
+    in2_pin=StaticOutput(gpio_number=GpioNumber(value=config.bottom_omikuji.IN2_PIN)),
+    in3_pin=StaticOutput(gpio_number=GpioNumber(value=config.bottom_omikuji.IN3_PIN)),
+    in4_pin=StaticOutput(gpio_number=GpioNumber(value=config.bottom_omikuji.IN4_PIN)),
+    sleep=Sleep(),
   ),
-  config.bottom_omikuji.SEQUENCE,
+  sequence=config.bottom_omikuji.SEQUENCE,
 )

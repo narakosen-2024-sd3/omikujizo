@@ -1,5 +1,5 @@
-from abc import ABCMeta
+from typing import Protocol
 
 
-class I2cInterface(metaclass=ABCMeta):
-  pass
+class II2c(Protocol):
+  raise NotImplementedError()

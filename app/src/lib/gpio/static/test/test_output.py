@@ -1,26 +1,38 @@
 # pyright: reportMissingTypeStubs=false
 # pyright: reportUnknownMemberType=false
+# pyright: reportArgumentType=false
 
-from typing import Literal
 
 import pigpio
 import pytest
 
-from src.lib.gpio.static.output import StaticOutputWrapper
-from src.lib.gpio.static.value.logic_level import LogicLevel
-from src.lib.gpio.value.gpio_number import GpioNumber
+from src.lib.gpio.gpio_number import GpioNumber
+from src.lib.gpio.static.output import StaticOutput
 
 
+@pytest.mark.skip(reason="Due to hardware dependence")
 @pytest.mark.parametrize(
-  "input,expected",
-  [
-    (LogicLevel("HIGH"), 1),
-    (LogicLevel("LOW"), 0),
-  ],
+  "input",
+  [i for i in range(2, 28)],
 )
-def test_set(input: LogicLevel, expected: Literal[0, 1]):
-  gpio_number = GpioNumber(2)
-  static_output = StaticOutputWrapper(gpio_number)
-  static_output.set(input)
+def test_set_high(input: int):
+  gpio_number = GpioNumber(input)
+  static_output = StaticOutput(gpio_number)
+  static_output.set_high()
+
   pi = pigpio.pi()
-  assert pi.read(gpio=gpio_number.get_value()) == expected
+  assert pi.read(gpio=gpio_number.get_value()) == 1
+
+
+@pytest.mark.skip(reason="Due to hardware dependence")
+@pytest.mark.parametrize(
+  "input",
+  [i for i in range(2, 28)],
+)
+def test_set_low(input: int):
+  gpio_number = GpioNumber(input)
+  static_output = StaticOutput(gpio_number)
+  static_output.set_low()
+
+  pi = pigpio.pi()
+  assert pi.read(gpio=gpio_number.get_value()) == 0

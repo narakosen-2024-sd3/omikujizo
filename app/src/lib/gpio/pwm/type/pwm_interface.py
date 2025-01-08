@@ -1,14 +1,12 @@
-from abc import ABCMeta, abstractmethod
+from typing import Protocol
 
-from ..value.duty_cycle import DutyCycle
-from ..value.frequency import Frequency
+from ..duty_cycle import DutyCycle
+from ..frequency import Frequency
 
 
-class PwmInterface(metaclass=ABCMeta):
-  @abstractmethod
+class IPwmOutput(Protocol):
   def set(self, frequency: Frequency, duty_cycle: DutyCycle) -> None:
     raise NotImplementedError()
 
-  @abstractmethod
   def off(self) -> None:
     raise NotImplementedError()

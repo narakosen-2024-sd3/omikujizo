@@ -1,9 +1,9 @@
-from abc import ABCMeta, abstractmethod
-
-from ..value.logic_level import LogicLevel
+from typing import Protocol
 
 
-class StaticInputInterface(metaclass=ABCMeta):
-  @abstractmethod
-  def read(self) -> LogicLevel:
+class IStaticInput(Protocol):
+  def is_high(self) -> bool:
+    raise NotImplementedError()
+
+  def is_low(self) -> bool:
     raise NotImplementedError()

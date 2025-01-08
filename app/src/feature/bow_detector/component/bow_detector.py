@@ -1,7 +1,7 @@
-from ..type.bow_detector_interface import BowDetectorInterface
+from ..type.bow_detector_interface import IBowDetector
 
 
-class BowDetector(BowDetectorInterface):
+class BowDetector(IBowDetector):
   def __init__(self) -> None:
     pass
 

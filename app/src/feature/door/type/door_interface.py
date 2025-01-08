@@ -1,11 +1,9 @@
-from abc import ABCMeta, abstractmethod
+from typing import Protocol
 
 
-class DoorInterface(metaclass=ABCMeta):
-  @abstractmethod
+class IDoor(Protocol):
   def open(self) -> None:
     raise NotImplementedError()
 
-  @abstractmethod
   def close(self) -> None:
     raise NotImplementedError()

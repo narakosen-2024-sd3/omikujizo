@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from lib.gpio.value.gpio_number import GpioNumberType
+from src.lib.gpio.gpio_number import GpioNumberType
 
 
 class HaloConfig(BaseModel):

@@ -3,7 +3,7 @@ import math
 import pytest
 from pytest_mock import MockerFixture
 
-from ..value.servo_motor_degree import ServoMotorDegree
+from ..servo_motor_degree import ServoMotorDegree
 
 
 @pytest.mark.parametrize(

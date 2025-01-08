@@ -4,12 +4,13 @@
 import pigpio
 import pytest
 
-from src.lib.gpio.pwm.pwm import PwmWrapper
-from src.lib.gpio.pwm.value.duty_cycle import DutyCycle
-from src.lib.gpio.pwm.value.frequency import Frequency
-from src.lib.gpio.value.gpio_number import GpioNumber
+from src.lib.gpio.gpio_number import GpioNumber
+from src.lib.gpio.pwm.duty_cycle import DutyCycle
+from src.lib.gpio.pwm.frequency import Frequency
+from src.lib.gpio.pwm.pwm import PwmOutput
 
 
+@pytest.mark.skip(reason="Due to hardware dependence")
 @pytest.mark.parametrize(
   "input,expected",
   [
@@ -21,7 +22,7 @@ def test_set(input: tuple[Frequency, DutyCycle], expected: tuple[float, float]):
   expected_1, expected_2 = expected
 
   gpio_number = GpioNumber(2)
-  pwm = PwmWrapper(gpio_number)
+  pwm = PwmOutput(gpio_number)
   pwm.set(input_1, input_2)
 
   pi = pigpio.pi()

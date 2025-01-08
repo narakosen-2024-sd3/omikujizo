@@ -1,11 +1,9 @@
-from abc import ABCMeta, abstractmethod
+from typing import Protocol
 
 
-class JewelInterface(metaclass=ABCMeta):
-  @abstractmethod
+class IJewel(Protocol):
   def turn_on(self) -> None:
     raise NotImplementedError()
 
-  @abstractmethod
   def turn_off(self) -> None:
     raise NotImplementedError()

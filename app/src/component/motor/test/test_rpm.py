@@ -3,7 +3,7 @@ import sys
 import pytest
 from pytest_mock import MockerFixture
 
-from ..rpm import Rpm
+from ..servo.servo_motor_rpm import Rpm
 
 epsilon = sys.float_info.epsilon
 

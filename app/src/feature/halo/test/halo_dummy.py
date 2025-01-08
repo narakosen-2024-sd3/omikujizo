@@ -1,7 +1,7 @@
-from ..type.halo_interface import HaloInterface
+from ..type.halo_interface import IHalo
 
 
-class HaloDummy(HaloInterface):
+class HaloDummy(IHalo):
   def turn_on(self) -> None:
     print("Halo.turn_on()")
 

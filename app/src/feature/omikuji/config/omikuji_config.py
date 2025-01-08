@@ -3,15 +3,31 @@ from typing import Annotated, Literal
 from annotated_types import Len
 from pydantic import BaseModel
 
-from lib.gpio.value.gpio_number import GpioNumberType
+from src.lib.gpio.gpio_number import GpioNumberType
 
 
 class BottomOmikujiConfig(BaseModel):
   type ROLL_TYPE = Literal["Kichi", "Kyo"]
-  DIR_PIN: GpioNumberType = 23
-  ENABLE_PIN: GpioNumberType = 14
-  STEP_PIN: GpioNumberType = 25
-  SEQUENCE: Annotated[list[ROLL_TYPE], Len(min_length=20, max_length=20)] = [
+  IN1_PIN: GpioNumberType = 25
+  IN2_PIN: GpioNumberType = 8
+  IN3_PIN: GpioNumberType = 7
+  IN4_PIN: GpioNumberType = 16
+  FLAP_NUM: int = 20
+  SEQUENCE: Annotated[
+    list[ROLL_TYPE],
+    Len(min_length=FLAP_NUM, max_length=FLAP_NUM),
+  ] = [
+    "Kichi",
+    "Kichi",
+    "Kichi",
+    "Kyo",
+    "Kyo",
+    "Kyo",
+    "Kichi",
+    "Kichi",
+    "Kyo",
+    "Kyo",
+    "Kichi",
     "Kichi",
     "Kichi",
     "Kyo",
@@ -19,48 +35,43 @@ class BottomOmikujiConfig(BaseModel):
     "Kyo",
     "Kyo",
     "Kichi",
-    "Kichi",
     "Kyo",
     "Kichi",
-    "Kichi",
-    "Kyo",
-    "Kyo",
-    "Kichi",
-    "Kichi",
-    "Kichi",
-    "Kichi",
-    "Kyo",
-    "Kyo",
-    "Kyo",
   ]
-  SPEED_ON_SPIN: int = 15
+  INITIAL_SEQUENCE_INDEX: int = 0
+  SPEED_WHEN_SPIN: int = 15
 
 
 class TopOmikujiConfig(BaseModel):
   type ROLL_TYPE = Literal["Dai", "Sho", ""]
-  DIR_PIN: GpioNumberType = 8
-  ENABLE_PIN: GpioNumberType = 24
-  STEP_PIN: GpioNumberType = 15
-  SEQUENCE: Annotated[list[ROLL_TYPE], Len(min_length=20, max_length=20)] = [
+  IN1_PIN: GpioNumberType = 14
+  IN2_PIN: GpioNumberType = 15
+  IN3_PIN: GpioNumberType = 23
+  IN4_PIN: GpioNumberType = 24
+  FLAP_NUM: int = 20
+  SEQUENCE: Annotated[
+    list[ROLL_TYPE], Len(min_length=FLAP_NUM, max_length=FLAP_NUM)
+  ] = [
+    "Sho",
+    "Dai",
+    "Sho",
+    "Sho",
+    "",
+    "Dai",
+    "Dai",
+    "Sho",
+    "Sho",
+    "",
+    "Dai",
     "Dai",
     "Sho",
     "",
+    "Dai",
     "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
+    "Dai",
+    "Sho",
+    "Sho",
+    "Sho",
   ]
-  SPEED_ON_SPIN: int = 15
+  INITIAL_SEQUENCE_INDEX: int = 0
+  SPEED_WHEN_SPIN: int = 15

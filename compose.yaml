@@ -1,0 +1,22 @@
+name: omikujizo-dev
+services:
+  app:
+    build:
+      context: ./app
+      target: development
+    volumes:
+      - type: bind
+        source: ./app
+        target: /workspace
+    privileged: true
+    network_mode: host
+    environment:
+      - DISPLAY=$DISPLAY
+    #ports:
+      # Enable GPIO control (pigpio)
+      #- 8888:8888
+    #devices:
+      # Enable Pi Camera control
+      #- "/dev/vchiq"
+      #- "/opt/vc"
+      #- "/run/udev:ro"

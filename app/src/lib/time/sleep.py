@@ -1,8 +1,8 @@
-import time
+import asyncio
 
-from .sleep_interface import SleepInterface
+from .type.sleep_interface import ISleep
 
 
-class Sleep(SleepInterface):
-  def sleep(self, time_sec: float) -> None:
-    time.sleep(time_sec)
+class Sleep(ISleep):
+  async def sleep(self, time_sec: float) -> None:
+    await asyncio.sleep(time_sec)

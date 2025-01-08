@@ -1,7 +1,7 @@
-from ..type.jewel_interface import JewelInterface
+from ..type.jewel_interface import IJewel
 
 
-class JewelDummy(JewelInterface):
+class JewelDummy(IJewel):
   def turn_on(self) -> None:
     print("Jewel.turn_on()")
 

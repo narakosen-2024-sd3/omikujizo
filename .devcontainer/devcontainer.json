@@ -8,15 +8,20 @@
     "vscode": {
       "extensions": [
         "ms-python.python",
+        "ms-python.vscode-pylance",
         "charliermarsh.ruff"
       ],
       "settings": {
         "[python]": {
           "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit"
-          }
+          },
+          "editor.tabSize": 2,
+          "editor.insertSpaces": true
         },
+        "files.eol": "\n",
         "editor.formatOnSave": true,
+        "python.analysis.typeCheckingMode": "strict",
         "python.defaultInterpreterPath": "/usr/local/bin/python",
         "python.testing.unittestEnabled": false,
         "python.testing.pytestEnabled": true
