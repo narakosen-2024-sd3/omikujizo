@@ -1,22 +1,12 @@
-name: omikujizo-dev
+name: omikujizo-prod
 services:
   app:
     build:
       context: ./app
-      target: development
-    volumes:
-      - type: bind
-        source: ./app
-        target: /workspace
+      target: production
     privileged: true
     network_mode: host
+    working_dir: /workspace
+    command: python src/main2.py
     environment:
       - DISPLAY=$DISPLAY
-    #ports:
-      # Enable GPIO control (pigpio)
-      #- 8888:8888
-    #devices:
-      # Enable Pi Camera control
-      #- "/dev/vchiq"
-      #- "/opt/vc"
-      #- "/run/udev:ro"

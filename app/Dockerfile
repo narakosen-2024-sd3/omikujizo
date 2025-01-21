@@ -21,7 +21,7 @@ ENV POETRY_HOME=/opt/poetry
 ENV POETRY_VERSION=1.8.5
 ENV POETRY_REQUESTS_TIMEOUT=600
 ENV PATH=$POETRY_HOME/bin:$PATH
-ENV PYTHONPATH=$APP_HOME/src:$PYTHONPATH
+ENV PYTHONPATH=$APP_HOME:$PYTHONPATH
 
 RUN rm /etc/apt/apt.conf.d/docker-clean
 
@@ -73,7 +73,7 @@ WORKDIR $APP_HOME
 ##############
 FROM deps AS production
 
-WORKDIR $APP_HOME
+ENV PYTHONPATH=/workspace:$PYTHONPATH
 
 RUN \
 --mount=type=cache,target=/var/lib/apt,sharing=locked \
@@ -85,6 +85,6 @@ RUN \
 EOF
 
 COPY --from=deps /usr/local/lib/python*/site-packages /usr/local/lib/python*/site-packages
-COPY . .
+COPY . /workspace
 
-CMD ["python", "src/main.py"]
+CMD ["python", "/workspace/src/main2.py"]

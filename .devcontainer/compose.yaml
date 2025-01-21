@@ -1,18 +1,15 @@
-name: omikujizo-dev
+name: omikujizo-devcontainer
 services:
   app:
     build:
       context: ../app
       target: development
+    privileged: true
+    network_mode: host
+    environment:
+      - DISPLAY=$DISPLAY
     command: sleep infinity
     volumes:
       - type: bind
         source: ../app
         target: /workspace
-    devices:
-      # Enable Camera control
-      - "/dev/video0"
-    privileged: true
-    network_mode: host
-    environment:
-      - DISPLAY=$DISPLAY
