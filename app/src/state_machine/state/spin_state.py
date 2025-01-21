@@ -3,13 +3,13 @@ from typing import Final, LiteralString
 from src.feature.door.type.door_interface import IDoor
 from src.feature.omikuji.type.omikuji_interface import IOmikuji
 
-from .state import State
+from ..type.state_interface import IState
 
 
 class SpinState[
   TOP_OMIKUJI_ROLL_TYPE: LiteralString,
   BOTTOM_OMIKUJI_ROLL_TYPE: LiteralString,
-](State):
+](IState):
   def __init__(
     self,
     door: IDoor,

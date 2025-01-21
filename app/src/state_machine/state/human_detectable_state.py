@@ -3,19 +3,13 @@ from typing import Final
 from src.feature.human_detector.type.human_detector_interface import (
   IHumanDetector,
 )
-from src.feature.jewel.type.jewel_interface import IJewel
 
-from .state import State
+from ..type.state_interface import IState
 
 
-class HumanDetectingState(State):
-  def __init__(
-    self,
-    human_detector: IHumanDetector,
-    jewel: IJewel,
-  ):
+class HumanDetectableState(IState):
+  def __init__(self, human_detector: IHumanDetector):
     self.__human_detector: Final[IHumanDetector] = human_detector
-    self.__jewel: Final[IJewel] = jewel
 
   def entry(self):
     pass

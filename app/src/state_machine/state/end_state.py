@@ -1,6 +1,7 @@
-from .state import State
+from ..type.state_interface import IState
 
-class EndState(State):
+
+class EndState(IState):
   def __init__(self):
     pass
 

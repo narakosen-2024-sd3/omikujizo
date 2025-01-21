@@ -10,3 +10,4 @@ services:
     command: python src/main2.py
     environment:
       - DISPLAY=$DISPLAY
+      - PYTHONPATH=/workspace:$PYTHONPATH
